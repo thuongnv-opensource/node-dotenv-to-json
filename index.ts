@@ -1,4 +1,5 @@
 const { parse } = require('dotenv');
+const YAML = require('json-to-pretty-yaml');
 
 const readAll = (stream: typeof process.stdin): Promise<string> => {
   return new Promise((resolve, reject) => {
@@ -16,15 +17,15 @@ const readAll = (stream: typeof process.stdin): Promise<string> => {
   });
 };
 
-const envToJson = (env: string): string => JSON.stringify(parse(env));
+// const envToJson = (env: string): string => JSON.stringify(parse(env));
 
-const toEnvK8s = (env: string): string => {
+const toEnvK8s = (env: string) => {
   const p = parse(env);
-  const result = []
+  const result:any = []
   Object.keys(p).forEach((key:string)=>{
      result.push({name:key,value:p[key]})
   })
-  return result
+  return YAML.stringify(result)
 };
 
 const run = (): void => {

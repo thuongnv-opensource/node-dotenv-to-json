@@ -14,7 +14,8 @@
     "url": "https://github.com/bouzuya/node-dotenv-to-json/issues"
   },
   "dependencies": {
-    "dotenv": "^4.0.0"
+    "dotenv": "^4.0.0",
+    "json-to-pretty-yaml": "^1.2.2"
   },
   "devDependencies": {
     "@types/node": "^8.0.15",
